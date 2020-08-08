@@ -9,6 +9,7 @@ public class Test {
         Aop4j aop4j=context.getBean("aop4j",Aop4j.class);
         aop4j.sayHi();
         aop4j.hesayHi();
+        System.out.println("你好");
     }
 
 }
