@@ -10,6 +10,7 @@ public class Test {
         aop4j.sayHi();
         aop4j.hesayHi();
         System.out.println("你好");
+        System.out.println("hello");
     }
 
 }
