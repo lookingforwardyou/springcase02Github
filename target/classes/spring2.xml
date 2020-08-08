@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+">
+<!--    基于纯java类实现aop,没有代理-->
+
+    <bean id="persion" class="com.AopPersion2.Persion" />
+
+<!--    增强-->
+    <bean id="sleepAdvice" class="com.AopPersion2.SleepAdvice" />
+
+<!--    实现切面，这里不需要实现切点,将切点和切面放在一起-->
+    <bean id="sleepAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor" >
+        <property name="advice" ref="sleepAdvice" />
+        <property name="pattern" value=".*sleep" />
+    </bean>
+
+<!--    设置自动代理-->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />
+</beans>
